@@ -2837,9 +2837,17 @@ handsontable.BlockedRows.prototype.refreshBorders = function () {
 handsontable.BlockedRows.prototype.dimensions = function (changes) {
   if (this.count() > 0) {
     var offset = this.instance.blockedCols.count();
-    for (var i = 0, ilen = this.ths.length; i < ilen; i++) {
+  	// Redim blocked cols
+    for (var i = 0; i < offset; i++) {
+    	this.ths[i].style.minWidth = $(this.instance.blockedCols.main[0].firstChild.getElementsByTagName('tbody')[0].firstChild.firstChild).width() + 'px';
+    }
+  	// Redim data cols
+    for (var i = 0, ilen = this.ths.length - offset; i < ilen; i++) {
       this.ths[i + offset].style.minWidth = $(this.instance.getCell(0, i)).width() + 'px';
     }
+    // Here we should re-dim rowHeaders line heights
+    //.....
+    // deleted code below
     //for (var i = 0, ilen = changes.length; i < ilen; i++) {
       //this.ths[changes[i][1] + offset].style.minWidth = $(this.instance.getCell(changes[i][0], changes[i][1])).width() + 'px';
     //}
