@@ -2838,7 +2838,7 @@ handsontable.BlockedRows.prototype.dimensions = function (changes) {
   if (this.count() > 0) {
     var offset = this.instance.blockedCols.count();
     for (var i = 0, ilen = this.ths.length; i < ilen; i++) {
-      this.ths[i].style.minWidth = $(this.instance.getCell(0, i)).width() + 'px';
+      this.ths[i + offset].style.minWidth = $(this.instance.getCell(0, i)).width() + 'px';
     }
     //for (var i = 0, ilen = changes.length; i < ilen; i++) {
       //this.ths[changes[i][1] + offset].style.minWidth = $(this.instance.getCell(changes[i][0], changes[i][1])).width() + 'px';
